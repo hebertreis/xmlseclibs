@@ -908,9 +908,10 @@ class XMLSecurityDSig
      * @param bool $insertBefore
      * @return DOMNode
      */
-    public function appendSignature($parentNode, $insertBefore = false)
+    public function appendSignature($parentNode, $insertBefore = false, $beforeElementPosition = 0)
     {
         $beforeNode = $insertBefore ? $parentNode->firstChild : null;
+		$beforeNode = $beforeElementPosition > 0 ? $parentNode->childNodes[$beforeElementPosition] : $beforeNode;
         return $this->insertSignature($parentNode, $beforeNode);
     }
 
